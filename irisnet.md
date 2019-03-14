@@ -22,3 +22,7 @@ https://www.irisplorer.io/#/home
 https://www.irisnet.org/docs/zh/
 
 - 测试环境
+https://github.com/irisnet/irishub
+
+- 全节点软件下载
+https://github.com/irisnet/irishub/releases/
