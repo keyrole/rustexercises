@@ -23,6 +23,8 @@ https://www.irisnet.org/docs/zh/
 
 - 测试环境
 https://github.com/irisnet/irishub
+https://www.irisnet.org/docs/zh/get-started/Join-the-Testnet.html#fuxi%E6%B5%8B%E8%AF%95%E7%BD%91
+
 
 - 全节点软件下载
 https://github.com/irisnet/irishub/releases/
