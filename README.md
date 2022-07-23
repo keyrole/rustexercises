@@ -1,2 +1,2 @@
-# blockchains
-collactions info for public blockchains
+# My Rust Exercises
+The exercises in my learning of rust.
