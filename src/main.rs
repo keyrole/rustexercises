@@ -4,11 +4,8 @@ use std::fs;
 use std::time;
 use std::thread;
 
-// struct Worker {
-
-//     id: usize,
-
-// }
+mod threadpool;
+use threadpool::ThreadPool;
 
 fn handle_stream(mut stream: TcpStream) {
     let mut buffer = [0; 512];
@@ -32,17 +29,11 @@ fn handle_stream(mut stream: TcpStream) {
 
 fn main() -> std::io::Result<()>{
     let listen = TcpListener::bind("127.0.0.1:8080")?;
-    let mut thread_vec:Vec<thread::JoinHandle<()>> = Vec::new();
+    // let mut thread_vec:Vec<thread::JoinHandle<()>> = Vec::new();
+    let thread_pool = ThreadPool::new(4);
     for stream in listen.incoming() {
         let stream = stream.unwrap();
-        let handle = thread::spawn(move || {
-            handle_stream(stream);
-        });
-        thread_vec.push(handle);
-    }
-
-    for handle in thread_vec {
-        handle.join().unwrap();
+        thread_pool.execute(|| handle_stream(stream));
     }
 
     Ok(())
