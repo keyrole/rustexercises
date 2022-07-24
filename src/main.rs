@@ -32,8 +32,17 @@ fn handle_stream(mut stream: TcpStream) {
 
 fn main() -> std::io::Result<()>{
     let listen = TcpListener::bind("127.0.0.1:8080")?;
+    let mut thread_vec:Vec<thread::JoinHandle<()>> = Vec::new();
     for stream in listen.incoming() {
-        handle_stream(stream?);
+        let stream = stream.unwrap();
+        let handle = thread::spawn(move || {
+            handle_stream(stream);
+        });
+        thread_vec.push(handle);
+    }
+
+    for handle in thread_vec {
+        handle.join().unwrap();
     }
 
     Ok(())
