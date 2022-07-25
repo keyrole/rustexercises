@@ -3,7 +3,9 @@ use linklist::Linklist;
 
 fn main() {
     println!("hi, good");
-    let mut ll = Linklist::new(1);
+    let mut ll = Linklist::new();
+
+    ll.push(1);
     ll.push(2);
     ll.push(3);
     ll.push(4);

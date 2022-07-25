@@ -23,18 +23,17 @@ impl<T> Node<T> {
 }
 
 impl<T> Linklist<T> {
-    pub fn new(data: T) -> Self {
-        let node = Node::new(data);
+    pub fn new() -> Self {
         Linklist {
-            top:Some(Box::new(node)),
+            top: None,
         }
     }
 
     pub fn push(&mut self, data: T) {
-        let next = self.top.take().unwrap();
+        let next = self.top.take();
         let node = Node {
             data,
-            next: Some(next),
+            next,
         };
         self.top = Some(Box::new(node));
     }
@@ -61,7 +60,9 @@ mod tests {
 
     #[test]
     fn test_fun() {
-        let mut linklist = Linklist::new(0);
+        let mut linklist = Linklist::new();
+
+        linklist.push(0);
         linklist.push(1);
         linklist.push(2);
         linklist.push(3);
