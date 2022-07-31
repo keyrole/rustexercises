@@ -4,3 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+error-chain = "0.12.4"
+data-encoding = "2.3.2" 
+ring = "0.17.0-alpha.11"
